@@ -2,29 +2,16 @@
 
 ## 1. What is static code analysis, and why is it useful?
 
-Static code analysis examines source code without executing it. It helps identify potential bugs, security vulnerabilities, and coding-style problems early in development. This makes code easier to maintain and reduces the chance of errors.
+Static code analysis examines source code without running the program. It can identify potential bugs, security weaknesses, and style violations early, making code easier to maintain and helping developers fix problems before deployment.
 
-## 2. What did Pylint, Bandit, and Flake8 help identify?
+## 2. What did Pylint, Bandit, and Flake8 identify?
 
-- **Pylint:** Helped identify code-quality issues, including import-order problems and the use of a global statement.
-- **Bandit:** Helped identify security-sensitive coding patterns, including insecure file-transfer and command-execution approaches.
-- **Flake8:** Identified formatting issues such as excessive blank lines, whitespace problems, and lines exceeding the permitted length.
+Pylint highlighted code-quality and maintainability issues, including the mutable default argument, naming and documentation problems, and unnecessary use of a global statement. Bandit identified security-sensitive patterns in the original code, including FTP, marshal deserialization, hardcoded credentials, and subprocess usage. Flake8 reported unused imports and formatting problems such as long lines and incorrect blank-line spacing.
 
-## 3. What improvements were made to the program?
+## 3. What changes were made to address the issues?
 
-I corrected the EMI interest-rate calculation, replaced the mutable default argument with a safer approach, validated loan types and application data, improved file handling, replaced insecure FTP transfer with SFTP, and improved application ID generation. I also corrected formatting and import-order issues.
+I corrected the annual interest-rate conversion used for EMI, improved loan eligibility and maximum-loan calculations, replaced the mutable default argument, validated loaded JSON records, and used context managers for file handling. I also replaced FTP with SFTP, removed hardcoded credentials, replaced predictable IDs with UUIDs, replaced the subprocess notification call with SMTP support, and corrected naming and formatting issues.
 
-## 4. What did I learn from this lab?
+## 4. What did I learn, and what are the limitations of static analysis?
 
-I learned that different static analysis tools focus on different aspects of a program. Using them together helps improve code quality, readability, maintainability, and security. I also learned that after changing code, I should rerun the tools and test the program to verify the changes.
-
-## 5. What are the limitations of static analysis?
-
-Static analysis can identify many potential problems, but it cannot guarantee that a program is completely secure or logically correct. Some issues require runtime testing, code review, and tests with different inputs. Security findings should therefore be reviewed rather than blindly ignored or suppressed.
-
-## Final Verification
-
-- Pylint score: 9.79/10
-- Flake8: No issues reported
-- Bandit: 0 High, 0 Medium, 0 Low findings in the latest report
-- Program execution: Completed successfully
+I learned that the three tools complement one another: Pylint focuses on code quality, Flake8 on style, and Bandit on common security risks. After fixing issues, I reran the tools and tested the program. The final Pylint score was 9.79/10, Flake8 reported no violations, and Bandit reported no findings. However, clean reports do not prove that software is completely correct or secure; runtime tests, input testing, and code review are still important.
